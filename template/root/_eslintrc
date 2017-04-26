@@ -1,0 +1,103 @@
+// 规则汇总：http://eslint.org/docs/rules/
+{
+    "version": "0.4.0",
+    "rules": {
+        // fie-lint:custom-val
+        // 可根据项目修改规则的值，但规则必须存在
+        "no-console": 0,
+        "no-eq-null": 2,
+        "no-multi-spaces": [1, {
+            "exceptions": {
+                "VariableDeclarator": true,
+                "ImportDeclaration": true
+            }
+        }],
+        "comma-spacing": [1, {
+            "before": false,
+            "after": true
+        }],
+        "indent": [2, 4, {"SwitchCase": 1}],
+        "quotes": [1, "single"],
+        // fie-lint:custom-val
+
+        // fie-lint:custom-rule
+        "react/display-name": 0, // 是否显示 Component 名称
+        "react/jsx-boolean-value": [1, "always"], // 传递布尔值时是否明确支持
+        "jsx-quotes": [2, "prefer-double"], // jsx 属性值用双引号
+        "react/jsx-no-undef": 1, // 判断 jsx 是否已经定义
+        "react/jsx-sort-props": 0, // 是否排序 props
+        "react/jsx-sort-prop-types": 0, // 是否排序 prop types
+        "react/jsx-uses-react": 2, // 组件中中是否用了 react
+        "react/jsx-uses-vars": 2, // 定义了 jsx component 没有使用
+        "react/no-did-mount-set-state": [0, "allow-in-func"],  // 不要在 componentDidMount 里面设置 state
+        "react/no-did-update-set-state": 0, // 同上
+        "react/no-multi-comp": 0, // 一个文件里面禁止声明多个 component
+        "react/no-unknown-property": 2, // 检查 class、for 属性是否转义
+        "react/prop-types": 0, // 不强制设置 proptypes
+        "react/react-in-jsx-scope": 1, // 查看 jsx 是否引入 react
+        "react/self-closing-comp": 2, // 检查是否有没有 children 的非子闭合标签
+        "react/wrap-multilines": 1, // 不强制 return 的时候，结构的格式
+        // 可根据项目增加新规则
+        // fie-lint:custom-rule
+
+        "comma-dangle": [2, "never"],
+        "no-debugger": 1,
+        "no-extra-semi": 0,
+        "no-inner-declarations": 2,
+        "no-regex-spaces": 1,
+        "valid-typeof": 2,
+        "default-case": 1,
+        "no-implied-eval": 2,
+        "no-with": 2,
+        "space-infix-ops": [2, {"int32Hint": true}],
+        "linebreak-style": [2, "unix"],
+        "max-len": [2, 140, 4,
+            {
+                "ignoreComments": true,
+                "ignoreUrls": true
+            }
+        ]
+    },
+    "plugins": [
+        "react" // 插件地址 https://github.com/yannickcr/eslint-plugin-react
+    ],
+    "ecmaFeatures": {
+        "jsx": true,
+        "arrowFunctions": true, // 是否支持箭头函数
+        "blockBindings": true, // 是否支持 let 和 const
+        "classes": true, // 是否支持 class
+        "defaultParams": true, // 是否支持
+        "destructuring": true, // 是否支持对象析构
+        "forOf": true, // 是否支持 for-of 语法
+        "modules": true, // 是否支持 modules 和全局 strict 模式
+        "objectLiteralComputedProperties": true, // 是否支持 计算属性名称 var lastName = "last name"; person[lastName] = "Zakas";
+        "objectLiteralShorthandMethods": true, // 是否支持缩短方法名 sayName: function() { => sayName() {
+        "objectLiteralShorthandProperties": true, // 是否支持缩短对象名 name: name, => name,
+        "experimentalobjectrestspread" : true, //一个是支持变量声明解构
+        "restParam": true, //个是方法参数解构
+        "spread": true, // 是否支持 spread
+        "superInFunctions": true, // 是否支持函数里调用 super
+        "templateStrings": true // 是否支持 ES6 模板语法
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "amd": true,
+        "commonjs": true,
+        "jquery": true
+    },
+    // 如果有其他全局变量，可自行在对应js文件里设置：/*global var1, var2*/
+    "globals": {
+        "$": true,
+        "_": true,
+        "TOP": false,
+        "jQuery": false,
+        "KISSY": false,
+        "Zepto": false,
+        "Angular": false,
+        "Backbone": false,
+        "React": false,
+        "Highcharts": false
+    },
+    "extends": "eslint:recommended" //将按ECMAScript规范推荐的规则都merge进来
+}

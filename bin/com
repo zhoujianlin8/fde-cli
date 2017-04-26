@@ -1,0 +1,203 @@
+#!/usr/bin/env node
+var program = require('ginit').commander;
+//var RT = require('../lib/rt');
+var updater = require('npm-updater');
+var semver = require('semver');
+var util = require('util');
+var packageJSON = require(__dirname+'/../package.json');
+var helpInfo = {
+  'init': ['初始化项目目录。', 'Init project directory'],
+  'p':['创建页面\n 使用方法:\n `rax page <page名称> [类型]'],
+  'c': ['创建component\n 使用方法:\n `rax component <component名称>', 'component related'],
+  'data': ['创建data\n 使用方法:\n `rax data <data名称> [数据类型]`', 'data related'],
+  'build': ['构建项目。', 'Build Project.'],
+  'start': ['启动项目调试服务器', 'Start up project debug server'],
+  '--port': ['端口号','server port'],  
+};
+function getTask() {
+    return require('../index');
+}
+updater({
+    package: packageJSON,
+    abort: false,
+    interval: '1h',
+    tag: packageJSON.version,
+    updateMessage: packageJSON.log || '版本升级'
+});
+
+var lang = process.env.LANG || 'zh';
+lang = (lang.indexOf('zh') === 0) ? 0 : 1;
+program
+  .version(packageJSON.version)
+  .option('-p, --port <port>', helpInfo['--port'][lang]);
+program
+  .command('init [template]')
+  .description(helpInfo['init'][lang])
+  .action(function (template) {
+      getTask().init(template);
+  });
+
+program
+  .command('c')
+  .description(helpInfo['c'][lang])
+  .action(function () {
+      addExec.call(this,'c')
+  });
+
+program
+  .command('p')
+  .description(helpInfo['p'][lang])
+  .action(function (name, type) {
+      addExec.call(this,'p')
+  });
+program
+  .command('data')
+  .description(helpInfo['data'][lang])
+  .action(function () {
+      addExec.call(this,'data')
+  });
+
+program
+  .command('build')
+  .description(helpInfo['build'][lang])
+  .action(function () {
+      var args = getArgs();
+      execScript({cli: 'build',args: args, done: function (err,cb) {
+         require('../lib/build')({
+              args:args
+          },cb);
+      }})
+  });
+
+
+program
+  .command('start ')
+  .description(helpInfo['start'][lang])
+  .action(function () {
+      var args = getArgs();
+      execScript({cli: 'start',args: args, done: function (err,cb) {
+          require('../lib/start')({
+              port: program.port,
+              args:args
+          },cb);
+      }})
+
+  });
+
+program
+  .command('*')
+  .description('deploy the given env')
+  .action(function () {
+      var args = process.argv.slice(2);
+      var cli = args.shift();
+      execScript({cli: cli,args: args})
+  });
+
+const isLatest = semver.gt(process.version, '5.6.0');
+
+if(!isLatest){
+    return console.error('您的node版本比较低，请升级gt 5.6.0')
+}
+
+//提示
+if(process.argv.length === 2){
+   // return RT.spawnExecCli('rax -h');
+}
+
+program.parse(process.argv);
+
+
+function addExec(cli) {
+    var Tasks = getTask();
+    var args = getArgs();
+    execScript({cli: cli,args: args, done: function (err,cb) {
+        var end = Tasks[cli].apply(Tasks,args) || {};
+        if(util.isFunction(end.then)){
+           end.then(function () {
+               cb();
+           })
+        }else{
+            cb();
+        }
+    }})
+}
+
+function execScript (obj,cb){
+   var cli = obj.cli;
+   var args = obj.args;
+   obj.done && obj.done(null,cb);
+   //RT.spawnExecCli(exec,callback);
+
+}
+//模拟 npm script 解析
+/*function execScript (obj,cb) {
+    var cli = obj.cli;
+    var args = obj.args || [];
+    RT.args = args;
+    process.env.args = args.join(',');
+    var cb = cb || function () {};
+    var config = RT.config;
+    var scripts = config.scripts || {};
+    if(cli.indexOf('pre') !== 0 && cli.indexOf('post') !== 0){
+        return execCli('pre'+cli,function (err) {
+            if(err) return;
+            execCli(cli,function (err1) {
+                if(err1) return;
+                execCli('post'+cli,function (err2) {
+                    if(err2) return;
+                    cb();
+                })
+            })
+        })
+    }else{
+        execCli(cli,cb);
+    }
+    function toUpperCaseOne(str) {
+        return str.substr(0,1).toUpperCase()+str.substr(1);
+    }
+    function execCli(execCli,callback) {
+        var envCli = process.env.clis || '';
+        envCli = envCli.split(',');
+        var exec = scripts[execCli];
+        //命令行
+        if(envCli.indexOf(execCli) === -1 && exec && util.isString(exec)){
+            envClis();
+            RT.spawnExecCli(exec,callback);
+            //默认功能直接执行
+        }else if(Tasks[execCli]){
+            envClis();
+            obj.done && obj.done(null,callback)
+        }else if(exec === true){
+            envClis();
+            if(config[execCli] && util.isFunction(config[cli])){
+                done(config[execCli],callback)
+            }else{
+                console.log('config['+cli+']'+'不存在')
+            }
+        }else if(util.isFunction(exec)){
+            envClis();
+            done(exec,callback)
+        }else{
+            //未找到提示
+            if(execCli.indexOf('pre') !== 0 && execCli.indexOf('post') !== 0){
+                console.log('rax '+cli + '命令不存在')
+            }
+            callback()
+        }
+        function envClis() {
+            envCli.indexOf(execCli) === -1 && envCli.push(execCli);
+            //直接arr有问题
+            process.env.clis = envCli.join(',');
+        }
+    }
+
+    function done(fn,callback) {
+        RT.doneCallback(fn,RT,callback)
+    }
+}*/
+
+
+
+function getArgs() {
+    return process.argv.slice(3)
+}

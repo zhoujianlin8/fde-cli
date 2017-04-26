@@ -1,0 +1,16 @@
+# 忽略目录
+build/
+test/
+demo/
+
+# node 覆盖率文件
+coverage/
+
+
+# 忽略文件
+**/*.min.js
+**/*-min.js
+
+# fie-lint:custom-rule 自定义规则区域
+
+# fie-lint:custom-rule

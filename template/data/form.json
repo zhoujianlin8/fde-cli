@@ -1,0 +1,18 @@
+{
+  "isSuccess":true,
+  "errorMsg":"",
+  "errCode": 0,
+  "data":{
+    "mallShopId":"专柜ID",
+    "mallShopName":"专柜名称",
+    "brandName":"品牌名",
+    "contact":"13388889999",
+    "linkMan":"品牌联系人",
+    "logo":"http://img01.daily.taobaocdn.net/tfscom/TB1_W5CXXXXXXaWXXXXq6xXFXXX",
+    "floor":"3",
+    "doorNumber":"320",
+    "category":"10000,20000",
+    "outerId":"3",
+    "mallShopDesc":"专柜名称test"
+  }
+}
