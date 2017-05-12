@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "git@gitlab.alibaba-inc.com:sanwant/react-com-toolkit.git"
+    "url": "git@github.com/zhoujianlin8/react-com-toolkit.git"
   },
   "description": "react-com-toolkit support",
   "keyword": [

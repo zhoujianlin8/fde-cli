@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "isCom": true,
   "scripts": {
-    "start": "detail start",
-    "build": "detail build"
+    "start": "com start",
+    "build": "com build"
   },
   "devDependencies": {
     "babel-core": "^6.7.4",

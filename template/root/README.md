@@ -1,9 +1,9 @@
 
 ## detail 工具
 ```
-tnpm install @ali/detail-toolkit -g
+npm install react-com-toolkit -g
 ```
 
 ### 使用文档
-* [detail-toolkit](http://gitlab.alibaba-inc.com/sanwant/detail-toolkit)
+* [react-com-toolkit](https://www.npmjs.com/package/react-com-toolkit)
 

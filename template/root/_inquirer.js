@@ -13,7 +13,7 @@ module.exports = {
     {
       type: 'confirm',
       name: 'isCom',
-      message: '是否是detail组件',
+      message: '是否是组件',
       default: true
     }
   ],

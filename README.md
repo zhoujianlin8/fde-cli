@@ -1,4 +1,4 @@
-## detail-toolkit 工具
+## react-com-toolkit 工具
 ####主要特点
 
 
@@ -6,7 +6,7 @@
 ### 安装
 
 ```
-$ tnpm install -g @ali/detail-toolkit
+$ npm install -g react-com-toolkit 
 
 ```
 
@@ -14,25 +14,25 @@ $ tnpm install -g @ali/detail-toolkit
 
 `````
  mkdir my-new-project && cd $_
- detail init(初始化项目 )
- detail start（开启项目）
- detail build（打包）
- detail test （自行实现）
- detail publish （自行实现）
+ com init(初始化项目 )
+ com start（开启项目）
+ com build（打包）
+ com test （自行实现）
+ com publish （自行实现）
 `````
 
 
 ### 命令使用
-* detail start [p/name]--某页面 开启项目
-* detail build [p/name]--某页面打包项目
-* detail init [url?] 项目初始化 后面参数实现自定义初始化
+* com start [p/name]--某页面 开启项目
+* com build [p/name]--某页面打包项目
+* com init [url?] 项目初始化 后面参数实现自定义初始化
 * 项目使用
-* detail data [name][type?]
-* detail p [name] 创建页面
-* detail c [name]  创建components
+* com data [name][type?]
+* com p [name] 创建页面
+* com c [name]  创建components
 
 
-### detail 组件目录
+### com 组件目录
 
 ```
       m-xxx            // 目录名, 小写, 多字符用 – 分隔
