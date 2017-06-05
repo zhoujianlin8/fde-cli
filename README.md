@@ -8,7 +8,6 @@
 ```
 $ npm install -g fde-cli
 
-
 ```
 ### 使用过程
 
@@ -50,7 +49,7 @@ $ npm install -g fde-cli
          |      |--- index.js //主入口文件
          |      |--- index.css
          |-----README.md    // 用于介绍项目文档
-         |-----fde-config.js     //配置文件
+         |-----fde.config.js     //配置文件
 ```
 
 
@@ -59,7 +58,7 @@ $ npm install -g fde-cli
 
 ```
   m-xxx            // 目录名, 小写, 多字符用 – 分隔
-     |-----data      // 模拟数据文件
+     |-----mock      // 模拟数据文件
      |-----build    // 用于存放需要cdn发布的文件
      |-----test     // 单元测试放的目录
      |-----src
@@ -83,7 +82,7 @@ $ npm install -g fde-cli
      |      |---fonts  //font目录字体copy   
      |      |---static //static目录静态资源copy
      |-----README.md    // 用于介绍项目文档
-     |-----fde-config.js     //  配置文件
+     |-----fde.config.js     //  配置文件
    
 ```
 默认打包约定
