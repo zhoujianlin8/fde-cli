@@ -3,8 +3,8 @@
   "main":  "lib/index.js",
   "version": "0.0.1",
   "scripts": {
-    "start": "com start",
-    "build": "com build"
+    "start": "fde start",
+    "build": "fde build"
   },
   "dependencies": {
     <%if(isReact){%>

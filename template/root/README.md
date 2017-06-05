@@ -1,9 +1,9 @@
 
-## detail 工具
+## EDE 工具
 ```
-npm install react-com-toolkit -g
+npm install fde-cli -g
 ```
 
 ### 使用文档
-* [react-com-toolkit](https://www.npmjs.com/package/react-com-toolkit)
+* [fde-cli](https://www.npmjs.fde/package/fde-cli)
 

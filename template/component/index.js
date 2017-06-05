@@ -1,3 +1,4 @@
+<%if(isReact){%>
 import React,{Component} from 'react';
 import "./index.scss";
 class <%=classedName%> extends Component {
@@ -16,3 +17,20 @@ class <%=classedName%> extends Component {
     componentDidMount(){}
 }
 export default <%=classedName%>;
+<%}else{%>
+class <%=classedName%>{
+    constructor(options) {
+        this.options = options;
+        this.init()
+    }
+    init(){
+        this.view();
+        this.bindEvent();
+    }
+    view(){}
+    bindEvent(){}
+    destory(){
+
+    }
+}
+<%}%>

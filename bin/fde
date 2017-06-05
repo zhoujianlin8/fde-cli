@@ -101,7 +101,7 @@ if(!isLatest){
 
 //提示
 if(process.argv.length === 2){
-    return RT.spawnExecCli('com -h');
+    return RT.spawnExecCli('fde -h');
 }
 
 program.parse(process.argv);
@@ -184,7 +184,7 @@ function execScript (obj,cb) {
         }else{
             //未找到提示
             if(execCli.indexOf('pre') !== 0 && execCli.indexOf('post') !== 0){
-                console.log('com '+cli + '命令不存在')
+                console.log('fde '+cli + '命令不存在')
             }
             callback()
         }

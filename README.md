@@ -1,36 +1,39 @@
-## react-com-toolkit 工具
+## FDE 工具
 ####主要特点
-* webpack2 koa 基于命令任务控制的开发环境
+* webpack2 koa 基于命令任务控制的 前端(Front end )开发(Development)环境(Environment)
+
 
 ### 安装
 
 ```
-$ npm install -g react-com-toolkit 
+$ npm install -g fde-cli
+
 
 ```
 ### 使用过程
 
 `````
  mkdir my-new-project && cd $_
- com init(初始化项目 )
- com start（开启项目）
- com build（打包）
- com test （自行实现）
- com publish （自行实现）
+ fde init(初始化项目 )
+ fde start（开启项目）
+ fde build（打包）
+ fde test （自行实现）
+ fde publish （自行实现）
+ ...（自行实现）
 `````
 
 
 ### 命令使用
-* com start [p/name]--某页面 开启项目
-* com build [p/name]--某页面打包项目
-* com init [url?] 项目初始化 后面参数实现自定义初始化
+* fde start [p/name]--某页面 开启项目
+* fde build [p/name]--某页面打包项目
+* fde init [url?] 项目初始化 后面参数实现自定义初始化
 * 项目使用
-* com data [name][type?]
-* com p [name] 创建页面
-* com c [name]  创建components
+* fde data [name][type?]
+* fde p [name] 创建页面
+* fde c [name]  创建components
 
 
-### com 组件目录
+### fde 组件目录
 
 ```
       m-xxx            // 目录名, 小写, 多字符用 – 分隔
@@ -47,7 +50,7 @@ $ npm install -g react-com-toolkit
          |      |--- index.js //主入口文件
          |      |--- index.css
          |-----README.md    // 用于介绍项目文档
-         |-----com-config.js     //配置文件
+         |-----fde-config.js     //配置文件
 ```
 
 
@@ -80,7 +83,7 @@ $ npm install -g react-com-toolkit
      |      |---fonts  //font目录字体copy   
      |      |---static //static目录静态资源copy
      |-----README.md    // 用于介绍项目文档
-     |-----com-config.js     //  配置文件
+     |-----fde-config.js     //  配置文件
    
 ```
 默认打包约定
@@ -89,5 +92,5 @@ $ npm install -g react-com-toolkit
 ['src/p/*/index.js','src/images/**','src/fonts/**','src/static/**']
 ````
 
-### bug反馈 zhoujianlin8@gmail.com
+### bug反馈 zhoujianlin8@gmail.fde
 

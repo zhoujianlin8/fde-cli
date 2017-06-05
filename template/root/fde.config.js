@@ -8,31 +8,32 @@ module.exports = {
         commonModules: ['react','react-dom'], //生成common.js
         isReact: true,
         <%}else{%>
-        commonModules: ['zepto'] //生成common.js
+        commonModules: ['zepto'], //生成common.js
         <%}%>
         <%if(isCom){%>
-            isCom: true
+        isCom: true, 
+        open: '/demo/index.html',
         <%}%>
     }, //默认实现的配置参数
     plugins: {
-        test: function (com) {
+        test: function (fde) {
 
         },
-        publish: function (com) {
+        publish: function (fde) {
 
         }
     }, //扩展命令插件
     //重写webpack配置
-    getWebpackConfig(com){
-        //com.env 区分start build
-        return com.webpackConfig;
+    getWebpackConfig(fde){
+        //fde.env 区分start build
+        return fde.webpackConfig;
     },
     //build 过程添加执行
-    addBuild(com){
+    addBuild(fde){
 
     },
     //添加 server 过程注入内容
-    addServer(com){
+    addServer(fde){
 
     }
     //...其他插件配置

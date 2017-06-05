@@ -1,20 +1,36 @@
+<%if(isReact){%>
 import React,{Component} from 'react';
+import "./index.scss";
 class <%=classedName%> extends Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
+        constructor(props, context) {
+            super(props, context);
+            this.state = {
 
-        };
+            };
+        }
+        render() {
+            return (
+                <div className="<%= classname %>-page">
+                hello world
+            </div>);
+        }
+        componentDidMount(){}
     }
-    render() {
-        return (
-        <div className="<%= classname %>-page">
-        <%= pname %> hello world
-        </div>
-        );
-    }
-    componentDidMount(){}
-}
-
 export default <%=classedName%>;
+<%}else{%>
+class <%=classedName%>{
+    constructor(options) {
+        this.options = options;
+        this.init()
+    }
+    init(){
+        this.view();
+        this.bindEvent();
+    }
+    view(){}
+    bindEvent(){}
+    destory(){
 
+    }
+}
+<%}%>

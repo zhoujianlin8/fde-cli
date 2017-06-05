@@ -28,7 +28,7 @@ Tasks.init = function (str) {
     }
     var dir = str ? str : path.join(templatePath, '/root');
     var data = getData();
-    data.isCom = true;
+    data.isCom = isCom;
     var self = this;
     ginit({
         dir: dir,
@@ -50,11 +50,13 @@ Tasks.init = function (str) {
             });
         }else{
             self.p('index');
+
         }
         console.log('项目初始成功');
-        xtUtil.npmInstall({},function(err){
+        console.log('正在执行 npm install ...');
+        xtUtil.tnpmInstall({},function(err){
             if(err){
-                console.error('tnpm install 自动执行出现问题， 请手动执行 tnpm install')
+                console.error('npm install 自动执行出现问题， 请手动执行 npm install')
             }
         })
     })
@@ -108,7 +110,7 @@ Tasks.data = function (name, type) {
     type = objType[type] || objType['index'];
     var data = getData(name);
     var key = data.cameledName;
-    var dist = path.join(srcBase, 'data/' + key + '.json');
+    var dist = path.join(srcBase, 'mock/' + key + '.json');
     if (fs.existsSync(dist)) {
         console.log('文件已经存在创建失败' + dist);
         process.exit(1);

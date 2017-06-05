@@ -59,7 +59,7 @@
         ]
     },
     "plugins": [
-        "react" // 插件地址 https://github.com/yannickcr/eslint-plugin-react
+        "react" // 插件地址 https://github.fde/yannickcr/eslint-plugin-react
     ],
     "ecmaFeatures": {
         "jsx": true,
