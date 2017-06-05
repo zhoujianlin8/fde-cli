@@ -5,7 +5,7 @@
     "type": "git",
     "url": "git@github.com/zhoujianlin8/fde-cli.git"
   },
-  "description": "react-com-toolkit support",
+  "description": "fde support",
   "keyword": [
     "koa",
     "webpack2"
