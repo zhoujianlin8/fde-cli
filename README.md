@@ -1,7 +1,6 @@
 ## react-com-toolkit 工具
 ####主要特点
-
-
+* webpack2 koa 基于命令任务控制的开发环境
 
 ### 安装
 
@@ -49,7 +48,7 @@ $ npm install -g react-com-toolkit
          |      |--- index.js //主入口文件
          |      |--- index.css
          |-----README.md    // 用于介绍项目文档
-         |-----detail-config.js     //配置文件
+         |-----com-config.js     //配置文件
 ```
 
 
@@ -82,7 +81,7 @@ $ npm install -g react-com-toolkit
      |      |---fonts  //font目录字体copy   
      |      |---static //static目录静态资源copy
      |-----README.md    // 用于介绍项目文档
-     |-----detail-config.js     //  配置文件
+     |-----com-config.js     //  配置文件
    
 ```
 默认打包约定

@@ -12,8 +12,8 @@ module.exports = {
     },*/
     {
       type: 'confirm',
-      name: 'isCom',
-      message: '是否是组件',
+      name: 'isReact',
+      message: '是否是react',
       default: true
     }
   ],

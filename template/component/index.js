@@ -15,6 +15,4 @@ class <%=classedName%> extends Component {
     }
     componentDidMount(){}
 }
-
 export default <%=classedName%>;
-

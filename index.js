@@ -21,34 +21,38 @@ Tasks.init = function (str) {
         console.log('项目已存在初始失败');
         return;
     }
+    var isCom = false;
+    if(str === 'com'){
+        str = '';
+        isCom = true;
+    }
     var dir = str ? str : path.join(templatePath, '/root');
     var data = getData();
+    data.isCom = true;
     var self = this;
     ginit({
         dir: dir,
         data: data
     }, function (obj) {
         abc.options = abc.options || {};
-        abc.options.isCom = obj.isCom;
-        if(obj.isCom){
+        abc.options.isCom = isCom;
+        if(isCom){
             var data = getData('demo'); //util._extend({isWeb: abc.options && abc.option.isWeb},getData(name));
             ginit({
                 dir: path.join(templatePath, '/demo'),
                 data: data,
                 dist: path.join(cwdPath, 'demo')
             });
-            data = getData(path.basename(cwdPath).replace('sanwant-',''));
             ginit({
                 dir: path.join(templatePath, '/component'),
                 data: data,
                 dist: srcBase
             });
-
         }else{
             self.p('index');
         }
         console.log('项目初始成功');
-        xtUtil.tnpmInstall({},function(err){
+        xtUtil.npmInstall({},function(err){
             if(err){
                 console.error('tnpm install 自动执行出现问题， 请手动执行 tnpm install')
             }

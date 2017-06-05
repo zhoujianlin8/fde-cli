@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var program = require('ginit').commander;
-//var RT = require('../lib/rt');
+var RT = require('../lib/rt');
 var updater = require('npm-updater');
 var semver = require('semver');
 var util = require('util');
@@ -101,7 +101,7 @@ if(!isLatest){
 
 //提示
 if(process.argv.length === 2){
-   // return RT.spawnExecCli('rax -h');
+    return RT.spawnExecCli('com -h');
 }
 
 program.parse(process.argv);
@@ -122,15 +122,15 @@ function addExec(cli) {
     }})
 }
 
-function execScript (obj,cb){
+/*function execScript (obj,cb){
    var cli = obj.cli;
    var args = obj.args;
    obj.done && obj.done(null,cb);
    //RT.spawnExecCli(exec,callback);
 
-}
+}*/
 //模拟 npm script 解析
-/*function execScript (obj,cb) {
+function execScript (obj,cb) {
     var cli = obj.cli;
     var args = obj.args || [];
     RT.args = args;
@@ -159,28 +159,32 @@ function execScript (obj,cb){
         var envCli = process.env.clis || '';
         envCli = envCli.split(',');
         var exec = scripts[execCli];
+        var pluginExec = config.plugins ? config.plugins[execCli]: null;
         //命令行
         if(envCli.indexOf(execCli) === -1 && exec && util.isString(exec)){
             envClis();
             RT.spawnExecCli(exec,callback);
             //默认功能直接执行
-        }else if(Tasks[execCli]){
+        }else if(getTask()[execCli]){
             envClis();
             obj.done && obj.done(null,callback)
         }else if(exec === true){
             envClis();
-            if(config[execCli] && util.isFunction(config[cli])){
-                done(config[execCli],callback)
+            if(pluginExec && util.isFunction(pluginExec)){
+                done(pluginExec,callback)
             }else{
                 console.log('config['+cli+']'+'不存在')
             }
         }else if(util.isFunction(exec)){
             envClis();
             done(exec,callback)
+        }else if(util.isFunction(pluginExec)){
+            envClis();
+            done(pluginExec,callback)
         }else{
             //未找到提示
             if(execCli.indexOf('pre') !== 0 && execCli.indexOf('post') !== 0){
-                console.log('rax '+cli + '命令不存在')
+                console.log('com '+cli + '命令不存在')
             }
             callback()
         }
@@ -194,9 +198,7 @@ function execScript (obj,cb){
     function done(fn,callback) {
         RT.doneCallback(fn,RT,callback)
     }
-}*/
-
-
+}
 
 function getArgs() {
     return process.argv.slice(3)

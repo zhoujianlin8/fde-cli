@@ -1,4 +1,4 @@
-var api = {
+const api = {
   index: ['xx','post'],
    
 }/*invoke*/;
