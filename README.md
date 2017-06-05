@@ -8,7 +8,6 @@
 $ npm install -g react-com-toolkit 
 
 ```
-
 ### 使用过程
 
 `````

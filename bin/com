@@ -194,7 +194,6 @@ function execScript (obj,cb) {
             process.env.clis = envCli.join(',');
         }
     }
-
     function done(fn,callback) {
         RT.doneCallback(fn,RT,callback)
     }
