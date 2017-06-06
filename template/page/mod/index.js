@@ -1,6 +1,5 @@
 <%if(isReact){%>
 import React,{Component} from 'react';
-import "./index.scss";
 class <%=classedName%> extends Component {
         constructor(props, context) {
             super(props, context);
