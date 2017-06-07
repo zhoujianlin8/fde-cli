@@ -1,8 +1,9 @@
 var pkg = require('./package.json');
 module.exports = {
     name: pkg.name,
-    vision: '@branch@', //版本号为分支号
+    vision: '@version@', //版本号为分支号
     scripts: pkg.scripts, //执行任务
+    group: 'm',
     options: {
         <%if(isReact){%>
         commonModules: ['react','react-dom'], //生成common.js
