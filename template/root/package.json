@@ -12,7 +12,7 @@
     "react-dom": "*",
     "reqwest": "*"
     <%}else{%>
-      "zepto": "*"
+      "npm-zepto": "*"
     <%}%>
   }
 }

@@ -6,14 +6,17 @@
 ### 安装
 
 ```
-$ npm install -g fde-cli
-
+npm install -g fde-cli
 ```
+* mac if error   sudo npm install -g fde-cli
+
 ### 使用过程
 
 `````
- mkdir my-new-project && cd $_
+ mkdir fdetest && cd fdetest
  fde init(初始化项目 )
+ fde init com(初始化组建开发项目)
+
  fde start（开启项目）
  fde build（打包）
  fde test （自行实现）
@@ -91,5 +94,5 @@ $ npm install -g fde-cli
 ['src/p/*/index.js','src/images/**','src/fonts/**','src/static/**']
 ````
 
-### bug反馈 zhoujianlin8@gmail.fde
+### bug反馈 zhoujianlin8@gmail.com
 

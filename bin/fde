@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var program = require('ginit').commander;
 var RT = require('../lib/rt');
-var updater = require('npm-updater');
+var updater = require('update-notifier');
 var semver = require('semver');
 var util = require('util');
 var packageJSON = require(__dirname+'/../package.json');
@@ -17,13 +17,10 @@ var helpInfo = {
 function getTask() {
     return require('../index');
 }
-updater({
-    package: packageJSON,
-    abort: false,
-    interval: '1h',
-    tag: packageJSON.version,
-    updateMessage: packageJSON.log || '版本升级'
-});
+updater({pkg: packageJSON}).notify();
+/*if(notifier.update){
+    console.log(`Update available: ${notifier.update.latest}`);
+}*/
 
 var lang = process.env.LANG || 'zh';
 lang = (lang.indexOf('zh') === 0) ? 0 : 1;

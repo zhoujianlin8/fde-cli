@@ -14,7 +14,6 @@ var options = util._extend({
 }, abc.options || {});
 var srcBase = path.join(cwdPath, options.srcBase);
 var Tasks = module.exports;
-
 //项目初始化
 Tasks.init = function (str) {
     if (fs.existsSync(RT.configPath)) {
@@ -42,28 +41,36 @@ Tasks.init = function (str) {
                 dir: path.join(templatePath, '/demo'),
                 data: data,
                 dist: path.join(cwdPath, 'demo')
-            });
-            ginit({
-                dir: path.join(templatePath, '/component'),
-                data: data,
-                dist: srcBase
+            },function () {
+                ginit({
+                    dir: path.join(templatePath, '/component'),
+                    data: data,
+                    dist: srcBase
+                },function () {
+                    install();
+                });
             });
         }else{
-            self.p('index');
-
+            self.p('index',function () {
+                install();
+            });
         }
+    });
+
+    function install() {
         console.log('项目初始成功');
-        console.log('正在执行 npm install ...');
+        console.log('正在执行 npm install ... ');
+        console.log('你可退出 手动执行 npm install ');
         xtUtil.tnpmInstall({},function(err){
             if(err){
                 console.error('npm install 自动执行出现问题， 请手动执行 npm install')
             }
         })
-    })
+    }
 };
 
 
-Tasks.p = function (name) {
+Tasks.p = function (name,cb) {
     if (!name) {
         return console.log('请输入页面名称')
     }
@@ -76,7 +83,7 @@ Tasks.p = function (name) {
         dir: path.join(templatePath, '/page'),
         data: data,
         dist: path.join(srcBase, 'p', name)
-    })
+    },cb)
 };
 
 //添加模块 

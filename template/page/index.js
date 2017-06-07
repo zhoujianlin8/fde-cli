@@ -14,7 +14,7 @@ const page = {
         this.bindEvent();
     },
     view(){
-
+        $('body').append('hello world')
     },
     bindEvent(){
 

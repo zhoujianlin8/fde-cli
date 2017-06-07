@@ -8,7 +8,10 @@ module.exports = {
         commonModules: ['react','react-dom'], //生成common.js
         isReact: true,
         <%}else{%>
-        commonModules: ['zepto'], //生成common.js
+        alias: {
+            zepto: 'npm-zepto'
+        },
+        commonModules: ['npm-zepto'], //生成common.js
         <%}%>
         <%if(isCom){%>
         isCom: true, 
