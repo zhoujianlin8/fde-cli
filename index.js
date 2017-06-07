@@ -79,6 +79,7 @@ Tasks.p = function (name,cb) {
     }
     var data = getData(name); //util._extend({isWeb: abc.options && abc.option.isWeb},getData(name));
     data.pname = name;
+    data.isReact = options.isReact;
     ginit({
         dir: path.join(templatePath, '/page'),
         data: data,
@@ -95,6 +96,7 @@ Tasks.c = function (name) {
         return console.log('该模块已存在创建失败')
     }
     var data = getData(name);
+    data.isReact = options.isReact;
     ginit({
         dir: path.join(templatePath, '/component'),
         data: data,
