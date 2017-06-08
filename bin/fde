@@ -12,7 +12,6 @@ var helpInfo = {
   'data': ['创建data\n 使用方法:\n `rax data <data名称> [数据类型]`', 'data related'],
   'build': ['构建项目。', 'Build Project.'],
   'start': ['启动项目调试服务器', 'Start up project debug server'],
-  '--port': ['端口号','server port'],  
 };
 function getTask() {
     return require('../index');
@@ -26,7 +25,6 @@ var lang = process.env.LANG || 'zh';
 lang = (lang.indexOf('zh') === 0) ? 0 : 1;
 program
   .version(packageJSON.version)
-  .option('-p, --port <port>', helpInfo['--port'][lang]);
 program
   .command('init [template]')
   .description(helpInfo['init'][lang])
@@ -74,7 +72,6 @@ program
       var args = getArgs();
       execScript({cli: 'start',args: args, done: function (err,cb) {
           require('../lib/start')({
-              port: program.port,
               args:args
           },cb);
       }})

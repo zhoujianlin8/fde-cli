@@ -1,8 +1,5 @@
 import api from './apimap';
 import Reqwest from 'reqwest';
-/*window.__WPO && window.__WPO.setConfig({
-    sample: 1
-});*/
 var tools = {
   /*
    * 调用改核心方法 统一接口处理
@@ -32,13 +29,7 @@ var tools = {
     };
     return Reqwest(param);
   },
-  log(){
-      return window.__WPO && window.__WPO.retCode && window.__WPO.retCode.apply(window.__WPO,arguments);
-  },
-  getToken() {
-    var $token = document.getElementsByName('_tb_token_');
-    return $token.length ? $token[0].value : '';
-  },
+
   isDaily(){
     var host = window.location.host;
     return host.indexOf('.daily.') > -1;
@@ -80,8 +71,6 @@ var tools = {
     }else{
       arr[0] +='&';
     }
-    arr[0] += '_tb_token_=' + this.getToken();
-    arr[0] += '&_input_charset=utf-8';
 
     return arr;
   },

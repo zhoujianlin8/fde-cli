@@ -33,6 +33,8 @@ npm install -g fde-cli
 * fde data [name][type?]
 * fde p [name] 创建页面
 * fde c [name]  创建components
+* PORT=4000 fde start 修改端口
+* PAGE=index fde start 指定打包页面
 
 
 ### fde 组件目录
