@@ -32,4 +32,5 @@ class <%=classedName%>{
 
     }
 }
+export default <%=classedName%>;
 <%}%>
