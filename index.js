@@ -63,8 +63,9 @@ Tasks.init = function (str) {
         console.log('你可退出 手动执行 npm install ');
         xtUtil.tnpmInstall({},function(err){
             if(err){
-                console.error('npm install 自动执行出现问题， 请手动执行 npm install')
+               return console.error('npm install 自动执行出现问题， 请手动执行 npm install')
             }
+            xtUtil.spawnExecCli('fde start')
         })
     }
 };
