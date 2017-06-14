@@ -35,6 +35,7 @@ Tasks.init = function (str) {
     }, function (obj) {
         abc.options = abc.options || {};
         abc.options.isCom = isCom;
+        options.isReact = obj.isReact; //isReact
         if(isCom){
             var data = getData('demo'); //util._extend({isWeb: abc.options && abc.option.isWeb},getData(name));
             ginit({
@@ -65,6 +66,7 @@ Tasks.init = function (str) {
             if(err){
                return console.error('npm install 自动执行出现问题， 请手动执行 npm install')
             }
+            console.log('正在执行 fde start');
             xtUtil.spawnExecCli('fde start')
         })
     }
