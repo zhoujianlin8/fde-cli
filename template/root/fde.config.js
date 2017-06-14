@@ -6,13 +6,7 @@ module.exports = {
     group: 'm',
     options: {
         <%if(isReact){%>
-        commonModules: ['react','react-dom'], //生成common.js
         isReact: true,
-        <%}else{%>
-        alias: {
-            zepto: 'npm-zepto'
-        },
-        commonModules: ['npm-zepto'], //生成common.js
         <%}%>
         <%if(isCom){%>
         isCom: true, 

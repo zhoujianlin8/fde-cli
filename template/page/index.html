@@ -10,7 +10,12 @@
 </head>
 <body>
 <div id="container"></div>
-<script type="text/javascript" src="/src/common.js"></script>
+<%if(isReact){%>
+<script type="text/javascript" src="//cdn.myweimai.com/assets/m/libs/1.0.0/react.min.js"></script>
+<script type="text/javascript" src="//cdn.myweimai.com/assets/m/libs/1.0.0/react-dom.min.js"></script>
+<%}else{%>
+<script type="text/javascript" src="//cdn.myweimai.com/assets/m/libs/1.0.0/zepto.min.js"></script>
+<%}%>
 <script type="text/javascript" src="/src/p/<%=pname%>/index.js"></script>
 </body>
 </html>
