@@ -1,5 +1,5 @@
 const api = {
-  index: ['xx','post'],
+  index: "xxx",
    
 }/*invoke*/;
 export default api;

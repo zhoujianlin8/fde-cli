@@ -1,0 +1,82 @@
+@import "./reset";
+.ofh {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* 多行省略号处理 */
+.ofmh {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.clearfix {
+  *zoom: 1
+}
+
+.clearfix:after {
+  display: block;
+  content: "";
+  height: 0;
+  font-size: 0;
+  clear: both
+}
+
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.text-hide {
+  text-indent: -9999em;
+  overflow: hidden;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+.invisible {
+  visibility: hidden;
+}
+
+.inline-b {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+}
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+ul,ol,li{
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+input,textarea,button{
+  &:focus{
+    outline: none;
+  }
+}
+// 文本超出隐藏
+@mixin text-autoellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

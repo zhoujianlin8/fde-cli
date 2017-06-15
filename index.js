@@ -53,7 +53,14 @@ Tasks.init = function (str) {
             });
         }else{
             self.p('index',function () {
-                install();
+                ginit({
+                    dir: path.join(templatePath, '/pc'),
+                    data: obj,
+                    dist: path.join(srcBase, '/c')
+                },function () {
+                    install();
+                })
+
             });
         }
     });
