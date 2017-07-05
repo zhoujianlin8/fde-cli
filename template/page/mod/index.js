@@ -28,7 +28,7 @@ class <%=classedName%>{
     }
     view(){}
     bindEvent(){}
-    destory(){
+    destroy(){
 
     }
 }

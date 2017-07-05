@@ -1,6 +1,6 @@
 {
   "name": "fde-cli",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "repository": {
     "type": "git",
     "url": "git@github.com/zhoujianlin8/fde-cli.git"
