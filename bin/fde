@@ -7,9 +7,9 @@ var util = require('util');
 var packageJSON = require(__dirname+'/../package.json');
 var helpInfo = {
   'init': ['初始化项目目录。', 'Init project directory'],
-  'p':['创建页面\n 使用方法:\n `rax page <page名称> [类型]'],
-  'c': ['创建component\n 使用方法:\n `rax component <component名称>', 'component related'],
-  'data': ['创建data\n 使用方法:\n `rax data <data名称> [数据类型]`', 'data related'],
+  'p':['创建页面\n 使用方法:\n `fde page <page名称> [类型]'],
+  'c': ['创建component\n 使用方法:\n `fde component <component名称>', 'component related'],
+  'data': ['创建data\n 使用方法:\n `fde data <data名称> [数据类型]`', 'data related'],
   'build': ['构建项目。', 'Build Project.'],
   'start': ['启动项目调试服务器', 'Start up project debug server'],
 };
