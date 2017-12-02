@@ -1,19 +1,39 @@
-import api from './apimap';
-import {AjaxMap} from '@wm/ajax';
-const ajax = AjaxMap({
-    apiMap: api
-});
+import apiMap from './apimap';
+import Modal from '@wm/modal';
+import Bridge from '@wm/bridge';
+import WM from 'wm';
+const Wm = new WM('v1');
 const tools = {
     /*
      * 调用改核心方法 统一接口处理
      * */
-    ajax(param, suc, err){
-        //其他设置成功失败定义
-        return ajax(param, suc, err)
-    },
-    isDaily(){
-        const host = window.location.host;
-        return host.indexOf('.daily.') > -1;
+    ajax(obj, suc, err){
+        obj.method =  obj.method || 'get';
+        const hostname = location.hostname;
+        if(obj.api){
+            const url = apiMap[obj.api];
+            obj.url = url;
+            if(['127.0.0.1','localhost'].indexOf(hostname) !== -1 ){
+                obj.url = '//'+location.host+'/mock/'+obj.api+'.json';
+                obj.method = 'get';
+                obj.beforeSend = function (opt) {
+                    delete opt.headers;
+                };
+            }
+        }
+        obj.success = function (res = {}) {
+            if(res.code === 0 || res.code === '0'){
+                suc(res)
+            }else{
+                Modal.toast('error:'+ (res.message || '服务端异常'));
+                err && err(res);
+            }
+        };
+        obj.error = function (res) {
+            Modal.toast('error:出现异常');
+            err && err(res);
+        };
+        return Wm.send(obj);
     },
 
     getUrlParam: function (name) {
@@ -65,6 +85,6 @@ const tools = {
         }
     }
 };
-export const NameSpace = tools.namespace.bind(tools);
-export const Ajax = tools.ajax.bind(tools);
+const Ajax = tools.ajax.bind(tools);
 export default tools;
+export {Modal,Wm,Ajax,Bridge}

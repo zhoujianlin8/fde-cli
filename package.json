@@ -1,6 +1,6 @@
 {
   "name": "fde-cli",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "repository": {
     "type": "git",
     "url": "git@github.com/zhoujianlin8/fde-cli.git"
@@ -85,6 +85,7 @@
       "email": "zhoujianlin8@gmail.com"
     }
   ],
+  "log": "wm exteral add",
   "dist": {
     "shasum": "f61d3df4d5cf0c0d6de93ea55bd84acf530b9d67",
     "tarball": "http://registry.npmjs.org/WRT/-/WRT-0.0.3.tgz"

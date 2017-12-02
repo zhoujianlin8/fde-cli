@@ -7,6 +7,7 @@
     "build": "fde build"
   },
   "dependencies": {
-    "@wm/ajax":"git+ssh://git@192.168.1.209:m/ajax.git"
+    "@wm/modal":"git+ssh://git@192.168.1.209:m/modal.git",
+    "@wm/bridge":"git+ssh://git@192.168.1.209:m/bridge.git"
   }
 }
