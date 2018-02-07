@@ -129,7 +129,7 @@ Tasks.data = function (name, type) {
     type = objType[type] || objType['index'];
     var data = getData(name);
     var key = data.cameledName;
-    var dist = path.join(srcBase, 'mock/' + key + '.json');
+    var dist = path.join(cwdPath, 'mock/' + key + '.json');
     if (fs.existsSync(dist)) {
         console.log('文件已经存在创建失败' + dist);
         process.exit(1);
